@@ -1,1 +1,52 @@
-index.htm
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8" />
+	<title>Onnettomuuslaskuri</title>
+	<style>
+
+	* {
+		margin: 0;
+		padding: 0;
+	}
+
+		body {
+			color: gray;
+			font-family: sans-serif;
+			font-weight: bold;
+			/*border: 1px solid #666;*/
+			width: 290px;
+			height: 160px;
+			overflow: auto;
+			text-align: center;
+		}
+		h1 {
+			font-size: 20pt;
+		}
+		h2 {
+			font-size: 36pt
+		}
+	</style>
+	<script src='js/moment-with-langs.min.js'></script>
+</head>
+<body>
+	<h2 id="days">aaa</h2>
+	<h1>päivää edellisestä onnettomuudesta<h1>
+	
+	<script>
+
+		moment.lang("fi");
+		var then = moment("20131230", "YYYYMMDD");
+		var now = moment();
+		var eroMs = now.diff(then);
+		var ero = now.diff(then, 'days');
+
+		document.getElementById("days").innerHTML = ero;
+
+		setInterval(function() {
+			document.getElementById("days").innerHTML = ero;
+			console.log("tik " + ero);
+		}, 3600000);
+	</script>
+</body>
+</html>
